@@ -1,0 +1,311 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "holidays": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "routeList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "bound": {
+            "type": "object",
+            "properties": {
+              "co": {
+                "type": "string"
+              },
+              "dir": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "co",
+              "dir"
+            ]
+          },
+          "co": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dest": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "string"
+              },
+              "zh": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "en",
+              "zh"
+            ]
+          },
+          "fares": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "faresHoliday": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "freq": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "serviceDayId": {
+                      "type": "string"
+                    },
+                    "startTime": {
+                      "type": "string"
+                    },
+                    "endTime": {
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    "intervalInSeconds": {
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "endTime",
+                    "intervalInSeconds",
+                    "serviceDayId",
+                    "startTime"
+                  ]
+                }
+              }
+            ]
+          },
+          "gtfsId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "jt": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "nlbId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "orig": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "string"
+              },
+              "zh": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "en",
+              "zh"
+            ]
+          },
+          "route": {
+            "type": "string"
+          },
+          "seq": {
+            "type": "integer"
+          },
+          "serviceType": {
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "stops": {
+            "type": "object",
+            "properties": {
+              "co": {
+                "type": "string"
+              },
+              "stopIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "co",
+              "stopIds"
+            ]
+          }
+        },
+        "required": [
+          "bound",
+          "co",
+          "dest",
+          "fares",
+          "faresHoliday",
+          "freq",
+          "gtfsId",
+          "jt",
+          "name",
+          "nlbId",
+          "orig",
+          "route",
+          "seq",
+          "serviceType",
+          "stops"
+        ]
+      }
+    },
+    "serviceDayMap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "serviceDayId": {
+            "type": "string"
+          },
+          "mapping": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "mapping",
+          "serviceDayId"
+        ]
+      }
+    },
+    "stopList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stopId": {
+            "type": "string"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "number"
+              },
+              "lng": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "lat",
+              "lng"
+            ]
+          },
+          "name": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "string"
+              },
+              "zh": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "en",
+              "zh"
+            ]
+          }
+        },
+        "required": [
+          "location",
+          "name",
+          "stopId"
+        ]
+      }
+    },
+    "stopMap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stopId": {
+            "type": "string"
+          },
+          "equivalent": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "co": {
+                  "type": "string"
+                },
+                "stopId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "co",
+                "stopId"
+              ]
+            }
+          }
+        },
+        "required": [
+          "equivalent",
+          "stopId"
+        ]
+      }
+    }
+  },
+  "required": [
+    "holidays",
+    "routeList",
+    "serviceDayMap",
+    "stopList",
+    "stopMap"
+  ]
+}
