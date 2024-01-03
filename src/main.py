@@ -2,7 +2,6 @@ import json
 import os
 import database
 from jsonschema import validate
-import py7zr
 
 if __name__ == '__main__':
     os.chdir('..')
@@ -17,10 +16,6 @@ if __name__ == '__main__':
 
         with open('data/AndroidRouteFareList.json', 'w', encoding='utf-8') as f:
             f.writelines(pretty_an_db)
-
-        os.chdir('data')
-        with py7zr.SevenZipFile('AndroidRouteFareList.7z', 'w') as archive:
-            archive.write('AndroidRouteFareList.json')
 
     except (TypeError, ValueError, KeyError) as err:
         print(type(err), err)
